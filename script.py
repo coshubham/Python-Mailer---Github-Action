@@ -17,7 +17,6 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
        msg['To'] = receiver_email  
        msg['Subject'] = subject
        msg.attach(MIMEText(body, 'plain'))
-
        try:
            # Connect to the SMTP server
                server = smtplib.SMTP('smtp.gmail.com', 587) 
