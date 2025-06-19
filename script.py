@@ -17,13 +17,16 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
        msg['To'] = receiver_email  
        msg['Subject'] = subject
        msg.attach(MIMEText(body, 'plain'))
+
        try:
            # Connect to the SMTP server
-           with smtplib.SMTP('smtp.gmail.com', 587) as server:
+               server = smtplib.SMTP('smtp.gmail.com', 587) 
                server.starttls()  # Upgrade the connection to a secure encrypted SSL/TLS connection
                server.login(sender_email, sender_password)  # Login to the email account
-               server.sendmail(sender_email, receiver_email, msg.as_string())  # Send the email
-           print("Email sent successfully!")
+               text = msg.as_string()  # Convert the message to a string format
+               server.sendmail(sender_email, receiver_email, text)  # Send the email
+               server.quit()  # Close the connection to the SMTP server
+               print("Email sent successfully!")
        except Exception as e:
            print(f"Failed to send email: {e}")  # Print error if email sending fails
 
