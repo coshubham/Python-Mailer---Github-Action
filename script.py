@@ -29,6 +29,4 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
                print("Email sent successfully!")
        except Exception as e:
            print(f"Failed to send email: {e}")  # Print error if email sending fails
-
-
        send_mail(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))  # Call the function with environment variables
