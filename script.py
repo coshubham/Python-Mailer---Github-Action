@@ -35,7 +35,7 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
         server.login(sender_email, sender_password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
         server.quit()
-        print("Email sent successfully!")
+        print("✅ Email sent successfully!")
     except Exception as e:
         print(f"❌ Failed to send email: {e}")
 

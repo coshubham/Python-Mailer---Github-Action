@@ -2,6 +2,9 @@ name: "Send E-Mail"
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   send_email:
@@ -25,6 +28,7 @@ jobs:
           WORKFLOW_NAME: ${{ github.workflow }}
           REPO_NAME: ${{ github.repository }}
           WORKFLOW_RUN_ID: ${{ github.run_id }}
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}   
+# go in github in setting in secrets and variables -> Actions -> screts-> add enviroment and creted a secret in this created the SENDER_EMAIL(add your email id),SENDER_PASSWORD(add app password created from your google account),RECEIVER_EMAIL(receiver email id).
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
